@@ -9,12 +9,12 @@
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed', sans-serif;
   font-weight: bolder;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
+  border-radius: 40px;
 
   &:hover {
     background-color: white;
