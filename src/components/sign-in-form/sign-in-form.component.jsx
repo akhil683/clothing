@@ -1,9 +1,8 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
-  signInWithGooglePopup,
+  // signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword
 } from "../../utils/firebase/firebase.utils";
-import { UserContext } from "../../context/user.context";
 
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
@@ -21,9 +20,9 @@ const SignInForm = () => {
   const [ error, setError ] = useState(false);
   // const { setCurrentUser } = useContext(UserContext);
 
-  const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
-  }
+  // const signInWithGoogle = async () => {
+  //   await signInWithGooglePopup();
+  // }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -34,15 +33,14 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       const { user }  = await signInAuthUserWithEmailAndPassword(email, password);
-      // setCurrentUser(user);
       setFormFields(defaultFormFields)
       setError(false);
     } catch (e) {
       if(e.code === 'auth/invalid-login-credentials') {
         setError(true);
     }
-      console.log(e);
-    }
+      alert("error occured");  
+  }
   };
 
   return (
@@ -58,6 +56,7 @@ const SignInForm = () => {
           type="text"
           onChange={handleChange}
           name="email"
+          autoComplete="email"
           value={email}
         />
         <FormInput
@@ -65,17 +64,18 @@ const SignInForm = () => {
           type="password"
           onChange={handleChange}
           name="password"
+          autoComplete="current-password"
           value={password}
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button 
+          {/* <Button 
             onClick={signInWithGoogle} 
             buttonType="google"
             type="button"
           >
              GOOGLE SIGN IN
-          </Button>
+          </Button> */}
         </div>
         
       </form>

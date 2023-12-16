@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-import Logo from "../../assets/logo";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
@@ -19,22 +18,22 @@ const Navigation = () => {
     <>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <Logo className="logo" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Spring_%28e-commerce_platform%29_logo.svg/2560px-Spring_%28e-commerce_platform%29_logo.svg.png" className="logo" height={30} />
         </Link>
         <div className="nav-links-container">
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
-          {currentUser ? ( 
+          <Link className="nav-link" to="/shop">
+            <CartIcon />
+          </Link>
+         {currentUser ? ( 
               <span onClick={signOutUser}>SIGN OUT</span>
             ) : (
               <Link className="nav-link" to='/auth'>
                 SIGN IN
               </Link>
           )}
-          <Link className="nav-link" to="/shop">
-            <CartIcon />
-          </Link>
         </div>
         { isCartOpen && <CartDropdown />}
       </div>

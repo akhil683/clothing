@@ -13,4 +13,4 @@ const CartIcon = () => {
     </div>
   )
 }
-export default CartIcon
+export default CartIcon;
